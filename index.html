@@ -12,10 +12,13 @@
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:inherit}
 body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-.wrap{max-width:720px;margin:0 auto;padding:28px 20px 40px}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 40px}
 .brand{font-weight:700;color:var(--brand);letter-spacing:.2px}
 h1{font-size:clamp(28px,7vw,40px);line-height:1.15;margin:14px 0 12px}
 .lead{color:var(--muted);font-size:18px;margin:0 0 22px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,1fr);gap:36px;align-items:center;margin-top:18px}
+.hero-copy{min-width:0}
+.hero-video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#000;border:1px solid var(--line);border-radius:16px}
 .btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:8px}
 .btn{display:inline-block;padding:14px 22px;border-radius:12px;font-weight:600;text-decoration:none;border:1px solid var(--brand)}
 .primary{background:var(--brand);color:#fff}
@@ -34,19 +37,28 @@ h2{font-size:22px;margin:34px 0 12px}
 .invite{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:14px}
 .invite b{color:var(--brand)}
 footer{margin-top:36px;color:var(--muted);font-size:13px}
+@media(max-width:700px){.hero{grid-template-columns:1fr;gap:20px}.hero-video{grid-row:2}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="brand">&#128222; <span class="app-name">Wazobia Call</span></div>
-  <h1>Speak your language. Be understood.</h1>
-  <p class="lead">Call anyone in Nigeria and talk in Yoruba or Igbo. The other person hears you in their own language, with no interpreter and no typing.</p>
+  <div class="hero">
+    <div class="hero-copy">
+      <h1>Speak your language. Be understood.</h1>
+      <p class="lead">Call anyone in Nigeria and talk in Yoruba or Igbo. The other person hears you in their own language, with no interpreter and no typing.</p>
 
-  <div class="btns">
-    <a id="android" class="btn primary" href="#">Download for Android</a>
-    <a class="btn ghost" aria-disabled="true">iPhone: coming soon</a>
+      <div class="btns">
+        <a id="android" class="btn primary" href="#">Download for Android</a>
+        <a class="btn ghost" aria-disabled="true">iPhone: coming soon</a>
+      </div>
+      <p class="note" id="hint">Free to try. Uses mobile data, not airtime.</p>
+    </div>
+    <video class="hero-video" controls playsinline preload="metadata" aria-label="Wazobia Call video preview">
+      <source src="demo_video.mp4" type="video/mp4">
+      Your browser does not support video playback.
+    </video>
   </div>
-  <p class="note" id="hint">Free to try. Uses mobile data, not airtime.</p>
 
   <div class="demo" aria-label="Example">
     <div class="row"><span class="who">Ngozi (Igbo)</span><span class="pill">Speaking...</span></div>
